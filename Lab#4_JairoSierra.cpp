@@ -9,13 +9,21 @@ char** provisionarMatriz(int);
 void liberarMatriz(char**&,int);
 //imprimir la matriz
 void printMatrix(char**,int);
-
+//Crear Matriz
+char** crear( int);
 int main()
 {
  int opcion = 0;
 	do{
+		int size=0;
+		 char** labMatrix=NULL;
 	switch(opcion=menu()){
 		case 1:
+			cout<<"Ingrese el tamaño de la matriz: "<<endl;
+			cin >> size;
+			//inicializar matriz n x n
+                        labMatrix=provisionarMatriz(size);
+			printMatrix(labMatrix,size);
 			
 	    break;
 		case 2:
@@ -66,13 +74,14 @@ void liberarMatriz(char**& matrix,int size){
      matrix[i]=NULL;
     }
   }
+}
 void printMatrix(char** matrix,int size){
     for(int i=0;i<size;i++){
      for(int j=0;j<size;j++){
+	matrix[i][j] = 'a';
         cout<<matrix[i][j]<<"  ";
      }
      cout<<endl;
   }
 
 }
-

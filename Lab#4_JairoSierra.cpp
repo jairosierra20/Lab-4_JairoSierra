@@ -10,7 +10,9 @@ void liberarMatriz(char**&,int);
 //imprimir la matriz
 void printMatrix(char**,int);
 //Crear Matriz
-char** crear( int);
+char** crear(char**, int);
+//Metodo
+char** metodo(char**, int);
 int main()
 {
  int opcion = 0;
@@ -23,6 +25,8 @@ int main()
 			cin >> size;
 			//inicializar matriz n x n
                         labMatrix=provisionarMatriz(size);
+			crear(labMatrix, size);
+			metodo(labMatrix,size);
 			printMatrix(labMatrix,size);
 			
 	    break;
@@ -78,10 +82,55 @@ void liberarMatriz(char**& matrix,int size){
 void printMatrix(char** matrix,int size){
     for(int i=0;i<size;i++){
      for(int j=0;j<size;j++){
-	matrix[i][j] = 'a';
         cout<<matrix[i][j]<<"  ";
      }
      cout<<endl;
   }
 
 }
+char** crear(char** matrix, int size){
+	char letra;
+    for(int i=0;i<size;i++){
+       cout<<"Ingrese el caracter"<<endl;
+       cin >> letra;
+       matrix[0][i] = letra;
+    }
+    return matrix;
+}
+char** metodo(char** matrix, int size){
+   for(int i=1;i<size;i++){
+      for(int j=0;j<size;j++){
+         if(j==0){
+	   if((matrix[i-1][j] == '^' && matrix[i-1][j+1] == '^') || (matrix[i-1][j] == '.' && matrix[i-1][j+1] == '^')){
+	     matrix[i][j] = '^';
+	   }
+	   else{
+	      matrix[i][j]='.';
+	   }
+	 }
+	 
+
+	if(j!= 0 && j != size-1)
+		matrix[i][j] = '*';
+
+	 if(j==size-1){
+      if((matrix[i-1][size-2] == '^' && matrix[i-1][size-1] == '^') ||( matrix[i-1][size-2] == '^' && matrix[i-1][size-1] == '.')){
+            matrix[i][j] = '^';
+      } 
+      else{
+         matrix[i][j]='.';
+      }
+          }
+     if(j!=0 && j!= size-1){
+       if((matrix[i-1][j-1] == '^' && matrix[i-1][j] == '^' && matrix[i-1][j+1] == '.') || (matrix[i-1][j-1] == '.' && matrix[i-1][j] == '^' && matrix[i-1][j+1] == '^') || (matrix[i-1][j-1] == '^' && matrix[i-1][j] == '.' && matrix[i-1][j+1] == '.') || (matrix[i-1][j-1] == '.' && matrix[i-1][j] == '.' && matrix[i-1][j+1] == '^')){
+		          matrix[i][j] = '^';
+		       }
+		       else{
+		         matrix[i][j] = '.';
+		       }
+     }	     
+        }
+      }
+
+   return matrix;
+}	

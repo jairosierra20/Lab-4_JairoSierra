@@ -40,6 +40,8 @@ int main()
 			contar(labMatrix,size);
 			//Imprime la matriz final
 			printMatrix(labMatrix,size);
+			//Liberar Matrix
+			liberarMatriz(labMatrix,size);
 			
 	    break;
 		case 2:

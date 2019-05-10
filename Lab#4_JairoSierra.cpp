@@ -90,6 +90,7 @@ void printMatrix(char** matrix,int size){
 }
 char** crear(char** matrix, int size){
 	char letra;
+	int cont=0;
     for(int i=0;i<size;i++){
        cout<<"Ingrese el caracter"<<endl;
        cin >> letra;
@@ -106,6 +107,7 @@ char** metodo(char** matrix, int size){
 	   }
 	   else{
 	      matrix[i][j]='.';
+	      cont++;
 	   }
 	 }
 	 
@@ -119,6 +121,7 @@ char** metodo(char** matrix, int size){
       } 
       else{
          matrix[i][j]='.';
+	 cont++;
       }
           }
      if(j!=0 && j!= size-1){
@@ -127,10 +130,11 @@ char** metodo(char** matrix, int size){
 		       }
 		       else{
 		         matrix[i][j] = '.';
+			 cont++;
 		       }
      }	     
         }
       }
-
+     cout<<"El numero de puntos es: "<<cont<<endl;
    return matrix;
 }	

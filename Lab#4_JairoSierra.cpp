@@ -13,6 +13,8 @@ void printMatrix(char**,int);
 char** crear(char**, int);
 //Metodo
 char** metodo(char**, int);
+//Contar puntos
+void contar(char**, int);
 int main()
 {
  int opcion = 0;
@@ -23,10 +25,16 @@ int main()
 		case 1:
 			cout<<"Ingrese el tamaño de la matriz: "<<endl;
 			cin >> size;
+			if(size<=0){
+			  cout<<"No se permiten negativos"<<endl;
+			  cout<<"Ingrese el tamaño de la matriz: "<<endl;
+                        cin >> size;
+			}
 			//inicializar matriz n x n
                         labMatrix=provisionarMatriz(size);
 			crear(labMatrix, size);
 			metodo(labMatrix,size);
+			contar(labMatrix,size);
 			printMatrix(labMatrix,size);
 			
 	    break;
@@ -90,7 +98,6 @@ void printMatrix(char** matrix,int size){
 }
 char** crear(char** matrix, int size){
 	char letra;
-	int cont=0;
     for(int i=0;i<size;i++){
        cout<<"Ingrese el caracter"<<endl;
        cin >> letra;
@@ -107,11 +114,8 @@ char** metodo(char** matrix, int size){
 	   }
 	   else{
 	      matrix[i][j]='.';
-	      cont++;
 	   }
 	 }
-	 
-
 	if(j!= 0 && j != size-1)
 		matrix[i][j] = '*';
 
@@ -121,20 +125,28 @@ char** metodo(char** matrix, int size){
       } 
       else{
          matrix[i][j]='.';
-	 cont++;
       }
           }
      if(j!=0 && j!= size-1){
        if((matrix[i-1][j-1] == '^' && matrix[i-1][j] == '^' && matrix[i-1][j+1] == '.') || (matrix[i-1][j-1] == '.' && matrix[i-1][j] == '^' && matrix[i-1][j+1] == '^') || (matrix[i-1][j-1] == '^' && matrix[i-1][j] == '.' && matrix[i-1][j+1] == '.') || (matrix[i-1][j-1] == '.' && matrix[i-1][j] == '.' && matrix[i-1][j+1] == '^')){
 		          matrix[i][j] = '^';
 		       }
-		       else{
-		         matrix[i][j] = '.';
-			 cont++;
-		       }
-     }	     
+	   else{
+	         matrix[i][j] = '.';
+	 }
+                      }	     
         }
       }
-     cout<<"El numero de puntos es: "<<cont<<endl;
    return matrix;
-}	
+}
+void contar(char** matrix, int size){
+  int cont=0;	
+  for(int i=0;i<size;i++){
+     for(int j=0;j<size;j++){
+        if(matrix[i][j] == '.'){
+	   cont++;
+	}	
+     }
+  }
+cout<<"El total de azulejos seguros son: "<<cont<<endl;
+}

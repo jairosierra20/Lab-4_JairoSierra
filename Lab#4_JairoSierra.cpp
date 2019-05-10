@@ -109,6 +109,7 @@ char** metodo(char** matrix, int size){
    for(int i=1;i<size;i++){
       for(int j=0;j<size;j++){
          if(j==0){
+           //Llena la esquina de la izquierda		 
 	   if((matrix[i-1][j] == '^' && matrix[i-1][j+1] == '^') || (matrix[i-1][j] == '.' && matrix[i-1][j+1] == '^')){
 	     matrix[i][j] = '^';
 	   }
@@ -116,9 +117,10 @@ char** metodo(char** matrix, int size){
 	      matrix[i][j]='.';
 	   }
 	 }
+	 //Llena la matriz para que no se corran los espacios
 	if(j!= 0 && j != size-1)
 		matrix[i][j] = '*';
-
+         //LLena la esquina de la derecha
 	 if(j==size-1){
       if((matrix[i-1][size-2] == '^' && matrix[i-1][size-1] == '^') ||( matrix[i-1][size-2] == '^' && matrix[i-1][size-1] == '.')){
             matrix[i][j] = '^';

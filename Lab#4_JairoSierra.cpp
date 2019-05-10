@@ -7,6 +7,9 @@ using std::endl;
 char** provisionarMatriz(int);
 //liberar memoria de la matriz
 void liberarMatriz(char**&,int);
+//imprimir la matriz
+void printMatrix(char**,int);
+
 int main()
 {
  int opcion = 0;
@@ -63,4 +66,13 @@ void liberarMatriz(char**& matrix,int size){
      matrix[i]=NULL;
     }
   }
+void printMatrix(char** matrix,int size){
+    for(int i=0;i<size;i++){
+     for(int j=0;j<size;j++){
+        cout<<matrix[i][j]<<"  ";
+     }
+     cout<<endl;
+  }
+
+}
 

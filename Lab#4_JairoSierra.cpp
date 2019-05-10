@@ -138,12 +138,12 @@ char** metodo(char** matrix, int size){
      if(j!=0 && j!= size-1){
        if((matrix[i-1][j-1] == '^' && matrix[i-1][j] == '^' && matrix[i-1][j+1] == '.') || (matrix[i-1][j-1] == '.' && matrix[i-1][j] == '^' && matrix[i-1][j+1] == '^') || (matrix[i-1][j-1] == '^' && matrix[i-1][j] == '.' && matrix[i-1][j+1] == '.') || (matrix[i-1][j-1] == '.' && matrix[i-1][j] == '.' && matrix[i-1][j+1] == '^')){
 		          matrix[i][j] = '^';
-		       }
+		        }
 	   else{
 	         matrix[i][j] = '.';
-	 }
-                      }	     
-        }
+	          }
+              }	     
+           }
       }
    return matrix;
 }

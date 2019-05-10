@@ -5,7 +5,8 @@ using std::endl;
   int menu();
   //Provisionar la matriz de chars para el laberinto
 char** provisionarMatriz(int);
-
+//liberar memoria de la matriz
+void liberarMatriz(char**&,int);
 int main()
 {
  int opcion = 0;
@@ -55,4 +56,11 @@ char** provisionarMatriz(int size){
    }
    return matrix;
 }
+void liberarMatriz(char**& matrix,int size){
+   for(int i=0;i<size;i++){
+    if(matrix[i] != NULL){
+     delete[] matrix[i];
+     matrix[i]=NULL;
+    }
+  }
 

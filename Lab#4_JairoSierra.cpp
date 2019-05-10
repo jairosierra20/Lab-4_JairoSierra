@@ -32,9 +32,13 @@ int main()
 			}
 			//inicializar matriz n x n
                         labMatrix=provisionarMatriz(size);
+			//Crea la matriz con la primera fila llena con lo que ingresa el usuario
 			crear(labMatrix, size);
+			//Llena la matriz con las demas validaciones
 			metodo(labMatrix,size);
+			//Cuenta los azulejos seguros de la matriz
 			contar(labMatrix,size);
+			//Imprime la matriz final
 			printMatrix(labMatrix,size);
 			
 	    break;
@@ -98,6 +102,7 @@ void printMatrix(char** matrix,int size){
 }
 char** crear(char** matrix, int size){
 	char letra;
+	//Llena la primera fila de la matriz con lo que ingresa el usuario
     for(int i=0;i<size;i++){
        cout<<"Ingrese el caracter"<<endl;
        cin >> letra;

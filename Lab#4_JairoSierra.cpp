@@ -127,6 +127,7 @@ char** metodo(char** matrix, int size){
          matrix[i][j]='.';
       }
           }
+     //Metodo para la validacion del medio
      if(j!=0 && j!= size-1){
        if((matrix[i-1][j-1] == '^' && matrix[i-1][j] == '^' && matrix[i-1][j+1] == '.') || (matrix[i-1][j-1] == '.' && matrix[i-1][j] == '^' && matrix[i-1][j+1] == '^') || (matrix[i-1][j-1] == '^' && matrix[i-1][j] == '.' && matrix[i-1][j+1] == '.') || (matrix[i-1][j-1] == '.' && matrix[i-1][j] == '.' && matrix[i-1][j+1] == '^')){
 		          matrix[i][j] = '^';

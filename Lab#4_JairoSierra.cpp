@@ -3,6 +3,9 @@ using std::cout;
 using std::cin;
 using std::endl;
   int menu();
+  //Provisionar la matriz de chars para el laberinto
+char** provisionarMatriz(int);
+
 int main()
 {
  int opcion = 0;
@@ -44,3 +47,12 @@ int menu(){
   }//end del while
   	return 0;
   }
+char** provisionarMatriz(int size){
+   char** matrix = NULL;
+   matrix = new char*[size];
+   for(int i=0;i<size;i++){
+      matrix[i]=new char[size];
+   }
+   return matrix;
+}
+
